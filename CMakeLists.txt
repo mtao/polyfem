@@ -1,10 +1,13 @@
 # Detects whether this is a top-level project
 get_directory_property(HAS_PARENT PARENT_DIRECTORY)
 if(HAS_PARENT)
-    set(POLYFEM_TOPLEVEL_PROJECT OFF)
+    set(POLYFEM_TOPLEVEL_PROJECT_DEFAULT_VALUE OFF)
 else()
-    set(POLYFEM_TOPLEVEL_PROJECT ON)
+    set(POLYFEM_TOPLEVEL_PROJECT_DEFAULT_VALUE ON)
 endif()
+
+option(POLYFEM_TOPLEVEL_PROJECT "Specify if POLYFEM is the top level project"
+    ${POLYFEM_TOPLEVEL_PROJECT_DEFAULT_VALUE})
 
 # Check required CMake version
 set(REQUIRED_CMAKE_VERSION "3.14.0")
